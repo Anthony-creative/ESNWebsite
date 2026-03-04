@@ -1,0 +1,43 @@
+/* Contenedor principal de la animación */
+.animated-title-container {
+    position: relative;
+    display: inline-flex;
+    overflow: hidden;
+    height: 1.2em;
+    vertical-align: bottom;
+    justify-content: flex-start;
+}
+
+/* Mantiene el ancho del contenedor basado en la palabra más larga */
+.invisible-placeholder {
+    visibility: hidden;
+}
+
+/* Estilos base para cada palabra animada */
+.word {
+    position: absolute;
+    left: 0;
+    top: 0;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateY(150%);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.5s ease;
+}
+
+/* Estado: Palabra visible actual */
+.word.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Estado: Palabra que acaba de salir (hacia arriba) */
+.word.prev {
+    opacity: 0;
+    transform: translateY(-150%);
+}
+
+/* Estado: Palabra esperando para entrar (hacia abajo) */
+.word.next {
+    opacity: 0;
+    transform: translateY(150%);
+}
